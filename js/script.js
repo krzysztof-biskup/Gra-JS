@@ -1,6 +1,20 @@
 'use strict';
 
+var buttons = document.querySelectorAll('.player-move');
+//console.log(buttons);
+
+var argument = [];
+
+for (var i = 0; i < buttons.length; i++ ) {  
+  argument.push(buttons[i].getAttribute('data-move'));
+}
+
+console.log(argument);
+
 document.getElementById("newGameButton").addEventListener('click', games);
+var roundNumber = document.getElementById('roundNumber');
+var compWin_field = document.getElementById('compWin_field');
+var userWin_field = document.getElementById('userWin_field')
 
 var gameNumber = 0;
 var moveNumber = 0;
@@ -9,13 +23,6 @@ function games(){
   reset();
   gameNumber = window.prompt('Liczba wygranych rund które kończą gre?');
   roundNumber.innerHTML = gameNumber;
-};
-
-var reset = function resetButton(){
-  document.getElementById("playerMove_scissors").disabled = false;
-  document.getElementById("playerMove_paper").disabled = false;
-  document.getElementById("playerMove_rock").disabled = false;
-  moveNumber = 0;
 };
 
 var computerPick = function randomNumber(min, max){
@@ -83,21 +90,23 @@ playerMove_rock.addEventListener('click', function(){
   var comPick = computerPick();
   var comPickName = comPickNames(comPick); //przypisywanie nazwy wybranej pozycji przez komputer
   moveNumber++;
+  
   game(comPick, rock, pickRock, comPickName);
   
-  buttonDisable(gameNumber, moveNumber);
-  
+  buttonDisable(gameNumber == moveNumber);
+ 
 });
 
 playerMove_paper.addEventListener('click', function(){
   var paper = 2;
   var pickPaper = 'Paper';
   moveNumber++;
+  
   var comPick = computerPick();
   var comPickName = comPickNames(comPick); //przypisywanie nazwy wybranej pozycji przez komputer
   
   game(comPick, paper, pickPaper, comPickName);
-  buttonDisable(gameNumber, moveNumber);
+  buttonDisable(gameNumber == moveNumber);
   
 });
 
@@ -105,24 +114,31 @@ playerMove_scissors.addEventListener('click', function(){
   var scissors = 3;
   var pickScissors = 'Scissors';
   moveNumber++;
+  
   var comPick = computerPick();
   var comPickName = comPickNames(comPick); //przypisywanie nazwy wybranej pozycji przez komputer
   
   game(comPick, scissors, pickScissors, comPickName);
-  buttonDisable(gameNumber, moveNumber);
+  buttonDisable(gameNumber == moveNumber);
+  
 });
-
-var buttonDisable = function(gameNumber, moveNumber) {
-  if (moveNumber == gameNumber) {
-    document.getElementById("playerMove_scissors").disabled = true;
-    document.getElementById("playerMove_paper").disabled = true;
-    document.getElementById("playerMove_rock").disabled = true;
-   
-  } 
-  else {
-    document.getElementById("playerMove_scissors").disabled = false;
-    document.getElementById("playerMove_paper").disabled = false;
-    document.getElementById("playerMove_rock").disabled = false;
-    
-  }
+ 
+var buttonDisable = function(toogle) {
+  document.getElementById("playerMove_scissors").disabled = toogle;
+  document.getElementById("playerMove_paper").disabled = toogle;
+  document.getElementById("playerMove_rock").disabled = toogle;
+  
+}; 
+  
+var reset = function() {
+  buttonDisable(false);
+  moveNumber = 0;
+  gameNumber = 0;
+  
+  compWin = 0;
+  userWin = 0;
+  
+  compWin_field.innerHTML = compWin;
+  userWin_field.innerHTML = userWin;
 };
+
