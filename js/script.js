@@ -12,8 +12,6 @@ var params = {
 
 document.getElementById('newGameButton').addEventListener('click', games);
 var roundNumber = document.getElementById('roundNumber');
-var compWin_field = document.getElementById('compWin_field');
-var userWin_field = document.getElementById('userWin_field');
 
 function games() {
   reset();
@@ -27,7 +25,7 @@ var computerPick = function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-var game = function (playerMove, computerMove,) {
+var game = function (playerMove, computerMove) {
   if (playerMove == computerMove) {
     output.innerHTML = 'Remis' + '<br><br>';
   } else if (playerMove == 'rock') {
@@ -65,25 +63,25 @@ var game = function (playerMove, computerMove,) {
     compWin: params.compWin,
   })
 
-if (params.roundsNumber != params.moveNumber) {
-  for (var i = 0; i < params.progress.length; i++) 
-  {
-    modalContent.innerHTML = 
-      'Numer rundy ' + params.progress[i]['roundNumber'] + '<br><br>' + 
-      'Ruch gracza: ' + params.progress[i]['playerMove'] + '<br><br>' + 
-      'Ruch komputera: ' + params.progress[i]['computerMove'] + '<br><br>' +
-      'Wynik rundy: ' + params.progress[i]['roundResult'] +
-      'Wynik gry po tej rundzie: ' + 'User: ' + params.progress[i]['userWin'] + ' vs ' + 'Computer: ' + params.progress[i]['compWin'];   
-  } 
-} else {
-  var j = params.roundsNumber - 1;
-  modalContent.innerHTML = 'Wynik gry: ' + 'User: ' + params.progress[j]['userWin'] + ' vs ' + 'Komputer: ' + params.progress[j]['compWin'] + '<br>';
-  if (params.progress[j]['userWin'] < params.progress[j]['compWin']) {
-    modalContent.innerHTML += 'Komputer wygrał'
-  }  else {
-    modalContent.innerHTML += 'User wygrał'
+  if (params.roundsNumber != params.moveNumber) {
+    for (var i = 0; i < params.progress.length; i++) 
+    {
+      modalContent.innerHTML = 
+        'Numer rundy ' + params.progress[i]['roundNumber'] + '<br><br>' + 
+        'Ruch gracza: ' + params.progress[i]['playerMove'] + '<br><br>' + 
+        'Ruch komputera: ' + params.progress[i]['computerMove'] + '<br><br>' +
+        'Wynik rundy: ' + params.progress[i]['roundResult'] +
+        'Wynik gry po tej rundzie: ' + 'User: ' + params.progress[i]['userWin'] + ' vs ' + 'Computer: ' + params.progress[i]['compWin'];   
+    } 
+  } else {
+    var j = params.roundsNumber - 1;
+    modalContent.innerHTML = 'Wynik gry: ' + 'User: ' + params.progress[j]['userWin'] + ' vs ' + 'Komputer: ' + params.progress[j]['compWin'] + '<br>';
+      if (params.progress[j]['userWin'] < params.progress[j]['compWin']) {
+        modalContent.innerHTML += 'Komputer wygrał'
+    }  else {
+      modalContent.innerHTML += 'User wygrał'
+    }
   }
-}
 };
 
 var buttons = document.getElementsByClassName('player-move');
@@ -101,9 +99,9 @@ for (var button of buttons) {
 };
 
 var buttonDisable = function (toogle) {
-  document.getElementById("playerMove_scissors").disabled = toogle;
-  document.getElementById("playerMove_paper").disabled = toogle;
-  document.getElementById("playerMove_rock").disabled = toogle;
+  document.getElementById('playerMove_scissors').disabled = toogle;
+  document.getElementById('playerMove_paper').disabled = toogle;
+  document.getElementById('playerMove_rock').disabled = toogle;
 };
 
 var reset = function () {
