@@ -27,36 +27,36 @@ var computerPick = function randomNumber(min, max) {
 
 var game = function (playerMove, computerMove) {
   if (playerMove == computerMove) {
-    output.innerHTML = 'Remis' + '<br><br>';
+    var output = 'Remis' + '<br><br>';
   } else if (playerMove == 'rock') {
     if (computerMove == 'paper') {
-      output.innerHTML = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      var output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.compWin++;
     } else {
-      output.innerHTML = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      var output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.userWin++;
     }
   } else if (playerMove == 'paper') {
     if (computerMove == 'scissors') {
-      output.innerHTML = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      var output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.compWin++;
     } else {
-      output.innerHTML = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      var output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.userWin++;
     }
   } else if (playerMove == 'scissors') {
     if (computerMove == 'rock') {
-      output.innerHTML = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      var output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.compWin++;
     } else {
-      output.innerHTML = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      var output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.userWin++;
     }
   }
   showModal();
   params.progress.push({
     roundNumber: params.roundNumber++,
-    roundResult: output.innerHTML, 
+    roundResult: output, 
     computerMove: computerMove,
     playerMove: playerMove,
     userWin: params.userWin,
@@ -112,8 +112,7 @@ var reset = function () {
   params.compWin = 0;
   params.userWin = 0;
 
-  compWin_field.innerHTML = params.compWin;
-  userWin_field.innerHTML = params.userWin;
+  
 };
 
 
