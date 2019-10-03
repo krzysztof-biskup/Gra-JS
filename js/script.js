@@ -26,22 +26,23 @@ var computerPick = function randomNumber(min, max) {
 };
 
 var game = function (playerMove, computerMove) {
+  var output = '';
   if (playerMove == computerMove) {
-    var output = 'Remis' + '<br><br>';
+    output = 'Remis' + '<br><br>';
   } else if (playerMove == 'rock') {
     if (computerMove == 'paper') {
-      var output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.compWin++;
     } else {
-      var output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.userWin++;
     }
   } else if (playerMove == 'paper') {
     if (computerMove == 'scissors') {
-      var output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.compWin++;
     } else {
-      var output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.userWin++;
     }
   } else if (playerMove == 'scissors') {
@@ -49,7 +50,7 @@ var game = function (playerMove, computerMove) {
       var output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.compWin++;
     } else {
-      var output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.userWin++;
     }
   }
