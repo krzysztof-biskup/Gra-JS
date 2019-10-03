@@ -47,7 +47,7 @@ var game = function (playerMove, computerMove) {
     }
   } else if (playerMove == 'scissors') {
     if (computerMove == 'rock') {
-      var output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
+      output = 'YOU LOOSE: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
       params.compWin++;
     } else {
       output = 'You WON: you played ' + playerMove + ',' + ' computer played ' + computerMove + '<br><br>';
